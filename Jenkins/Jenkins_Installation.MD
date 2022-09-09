@@ -17,22 +17,29 @@ Jenkins is a self-contained Java-based program, ready to run out-of-the-box, wit
 
 1. Confirm Java Version and set the java home
    ```sh
-   java -version
-   find /usr/lib/jvm/java-1.8* | head -n 3
-   JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-1.el8_0.x86_64
-   export JAVA_HOME
-   PATH=$PATH:$JAVA_HOME
-    # To set it permanently update your .bash_profile
-   vi ~/.bash_profile
-   ```
+ [root@~]# java -version
+ [root@~]# find /usr/lib/jvm/java-1.8* | head -n 3
+  ==> JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-1.el8_0.x86_64
+ # To set it permanently update your .bash_profile
+ [root@~]# vi ~/.bash_profile
+    This file will look like:   ---
+      # User specific environment and startup programs
+      JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-1.el8_0.x86_64
+      PATH=$PATH:$HOME/bin:$JAVA_HOME
+      export PATH
+# To consider the changes run command
+    [root@~]# source .bash_profile
+
+# To display the variable content:
+    [root@~]# echo $JAVA_HOME 
    _The output should be something like this,_
-    ```sh
+    ```/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-1.el8_0.x86_64
    [root@~]# java -version
+  The output should be something like this
    openjdk version "1.8.0_151"
    OpenJDK Runtime Environment (build 1.8.0_151-b12)
    OpenJDK 64-Bit Server VM (build 25.151-b12, mixed mode)
    ```
-
 ## Install Jenkins
  You can install jenkins using the rpm or by setting up the repo. We will set up the repo so that we can update it easily in the future.
 1. Get the latest version of jenkins from https://pkg.jenkins.io/redhat-stable/ and install
